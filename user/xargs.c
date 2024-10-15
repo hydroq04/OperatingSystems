@@ -52,7 +52,6 @@ main(int argc, char* argv[])
                     exec(argv[1], x_argv);
                 }
                 else {
-                    sleep(5);
                     wait((int*) 0);
                 }
                 --x_argc;
