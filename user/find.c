@@ -4,42 +4,64 @@
 #include "kernel/fs.h"
 #include "kernel/fcntl.h"
 
-void find(char* path, char* fname) {
+void find(char* root, char* name){
   char buf[512], *p;
-  int fd;
   struct dirent de;
   struct stat st;
-
-  if ((fd = open(path, O_RDONLY)) < 0){
-    fprintf(2, "ls: cannot open %s\n", path);
+    //open root
+  int fd;
+  if((fd = open(root,O_RDONLY)) < 0){
+    printf("find: cannot open %s\n",root);
     return;
+
   }
 
-  if (fstat(fd, &st) < 0){
-    fprintf(2, "ls: cannot stat %s\n", path);
+//kiem tra do sau cua direction
+    if(strlen(root) + 1 + DIRSIZ + 1 > sizeof buf){
+      printf("find: path %s too long\n", root);
+      close(fd);
+      return;
+    }
+
+    //them dau '/' vao sau duong dan
+    strcpy(buf, root);
+    p = buf+strlen(buf);
+    *p = '/';
+
+//lay stat cua cac muc ben trong thu muc
+  while(read(fd,&de,sizeof(de)) == sizeof(de)){
+    if(de.inum == 0 || strcmp(de.name,".") == 0 || strcmp(de.name,"..") == 0){
+      continue;
+    }
+    char temp[512], *t;
+    strcpy(temp, buf);
+    t = temp + strlen(temp);
+    memmove(t,de.name,DIRSIZ);
+  //stat
+  if(stat(temp,&st) < 0){
+    return;
+    continue;
+  }
+  switch(st.type){
+    case T_DEVICE:
+    case T_FILE:    
+    if(strcmp(de.name,name) == 0){
+      printf("%s\n",temp);
+    }
+    break;
+    case T_DIR:
+    find(temp,name);
+      break;
+    }//end switch/case
+  }//end while
     close(fd);
-    return;
-  }
-
-  if (st.type != T_DIR) {
-    printf("%s is not a directory. Proceeds to exit...\n", path);
-    sleep(2);
-    printf("Usage: find [fname]\n");
-    sleep(2);
-    printf("Usage: find [dir] [fname1] [fname2] ...\n");
-    return;
-  }
-  else {
-    
-  }
 }
 
-int main(int argc, char *argv[]) {
-  if (argc < 2) {
-    find(".", argv[1]);
-  }
-  else for (int i = 2; i < argc; ++i) {
-    find(argv[1], argv[i]);
-  }
-  exit(0);
+int main(int argc, char* argv[]){
+    if(argc <= 1){
+        printf("usage: find the paths to the file..\n");
+        exit(1);
+    }
+        find(argv[1],argv[2]);
+        exit(0);
 }
