@@ -1,0 +1,20 @@
+\contentsline {section}{Lời cảm ơn}{1}{figure.caption.2}%
+\contentsline {section}{\numberline {1}Giới thiệu}{3}{section.1}%
+\contentsline {section}{\numberline {2}Thuật toán tìm kiếm theo chiều sâu\\(Depth-first Search) \blx@tocontentsinit {0}\cite {berkeley}}{4}{section.2}%
+\contentsline {subsection}{Ý tưởng thuật toán}{4}{subsection*.6}%
+\contentsline {subsection}{Phân tích thuật toán}{5}{subsection*.7}%
+\contentsline {subsection}{Ví dụ}{6}{subsection*.8}%
+\contentsline {section}{\numberline {3}Thuật toán tìm kiếm theo chiều rộng\\(Breadth-first Search) \blx@tocontentsinit {0}\cite {berkeley}}{6}{section.3}%
+\contentsline {subsection}{Ý tưởng thuật toán}{6}{subsection*.9}%
+\contentsline {subsection}{Phân tích thuật toán}{7}{subsection*.10}%
+\contentsline {subsection}{Ví dụ}{8}{subsection*.11}%
+\contentsline {section}{\numberline {4}Thuật toán Ford - Bellman \blx@tocontentsinit {0}\cite {bellford}}{9}{section.4}%
+\contentsline {subsection}{Ý tưởng thuật toán}{9}{subsection*.12}%
+\contentsline {subsection}{Phân tích thuật toán}{11}{subsection*.13}%
+\contentsline {subsection}{Ví dụ}{11}{subsection*.14}%
+\contentsline {section}{\numberline {5}Thuật toán A* \blx@tocontentsinit {0}\cite {berkeley} \blx@tocontentsinit {0}\cite {geekastar}}{13}{section.5}%
+\contentsline {subsection}{Ý tưởng thuật toán A*}{13}{subsection*.15}%
+\contentsline {subsection}{Phân tích thuật toán}{15}{subsection*.16}%
+\contentsline {subsection}{Ví dụ}{15}{subsection*.17}%
+\contentsline {section}{\numberline {6}So sánh các thuật toán tìm kiếm trên}{16}{section.6}%
+\contentsline {section}{Tài liệu tham khảo}{17}{section.6}%
