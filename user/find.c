@@ -43,7 +43,6 @@ void find(char* root, char* name){
     // Invalid stat
     if (stat(temp,&st) < 0) {
       return;
-      continue;
     }
     
     switch (st.type) {
@@ -70,7 +69,7 @@ int main(int argc, char* argv[]){
       printf("usage: find <dir> <filename 1> [filename 2] [...]\n");
       exit(1);
   }
-  for (int i = 2; i < argc, ++i) {
+  for (int i = 2; i < argc; ++i) {
     find(argv[1], argv[i]);
   }
 
