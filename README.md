@@ -1,1 +1,1 @@
-This is where our report source code $(\text{\LaTeX})$ is stored
+This is where our report's LaTeX source code is stored
