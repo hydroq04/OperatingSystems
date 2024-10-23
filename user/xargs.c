@@ -37,7 +37,7 @@ main(int argc, char* argv[])
 
         while(read(0, &reader, 1)) {
             // Clear excess space
-            if (reader == ' ') {
+            if (reader == ' ' || reader == '\t') {
                 buffer[pos] = 0;
                 x_argv[x_argc] = &buffer[start];
                 ++x_argc;
@@ -48,16 +48,15 @@ main(int argc, char* argv[])
                 int pid = fork();
                 buffer[pos] = 0;
                 x_argv[x_argc] = &buffer[start];
+                ++x_argc;
                 if (pid == 0) {
-                    exec(argv[1], x_argv);
+                    exec(x_argv[0], x_argv);
                 }
-                else {
-                    wait((int*) 0);
-                }
+                wait((int*) 0);
                 --x_argc;
                 clear(x_argv, x_argc);
-                start = 0;
                 pos = 0;
+                start = pos;
             }
             else {
                 buffer[pos] = reader;
@@ -65,5 +64,6 @@ main(int argc, char* argv[])
             }
         }
     }
+    
     exit(0);
 }
